@@ -1,0 +1,20 @@
+ID: PROJ1
+_schema-version: '2.1'
+description: PROJECT 1
+version: 0.0.1
+
+modules:
+ - name: HDB
+   type: hdb
+   path: HDB
+   requires:
+    - name: hdi_HDB
+
+resources:
+ - name: hdi_HDB
+   parameters:
+      config:
+         schema: PROJ1SC
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container

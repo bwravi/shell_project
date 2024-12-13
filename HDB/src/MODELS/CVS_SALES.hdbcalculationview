@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="PROJ1::CVS_SALES" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CVS_SALES"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PROJ1::ORDERS">
+    <resourceUri>PROJ1::ORDERS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="SALES_FACTS">
+    <viewAttributes>
+      <viewAttribute id="ORDID"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="REQ_DATE"/>
+      <viewAttribute id="CUSTID"/>
+      <viewAttribute id="MATID"/>
+      <viewAttribute id="EMPID"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="UNIT"/>
+      <viewAttribute id="PRICE" aggregationType="sum"/>
+      <viewAttribute id="CURRENCY"/>
+      <viewAttribute id="YR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="PROJ1::ORDERS"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="SALES_FACTS">
+  <attributes>
+    <attribute id="ORDID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDID"/>
+      <keyMapping columnObjectName="SALES_FACTS" columnName="ORDID"/>
+    </attribute>
+    <attribute id="ORDER_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_DATE"/>
+      <keyMapping columnObjectName="SALES_FACTS" columnName="ORDER_DATE"/>
+    </attribute>
+    <attribute id="REQ_DATE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REQ_DATE"/>
+      <keyMapping columnObjectName="SALES_FACTS" columnName="REQ_DATE"/>
+    </attribute>
+    <attribute id="EMPID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPID"/>
+      <keyMapping columnObjectName="SALES_FACTS" columnName="EMPID"/>
+    </attribute>
+    <attribute id="UNIT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UNIT"/>
+      <keyMapping columnObjectName="SALES_FACTS" columnName="UNIT"/>
+    </attribute>
+    <attribute id="CURRENCY" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY"/>
+      <keyMapping columnObjectName="SALES_FACTS" columnName="CURRENCY"/>
+    </attribute>
+    <attribute id="YR" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YR"/>
+      <keyMapping columnObjectName="SALES_FACTS" columnName="YR"/>
+    </attribute>
+    <attribute id="MATID$local">
+      <descriptions defaultDescription="MATID"/>
+      <keyMapping columnObjectName="SALES_FACTS" columnName="MATID"/>
+    </attribute>
+    <attribute id="CUSTID$local">
+      <descriptions defaultDescription="CUSTID"/>
+      <keyMapping columnObjectName="SALES_FACTS" columnName="CUSTID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ORDER_QTY" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ORDER_QTY"/>
+      <measureMapping columnObjectName="SALES_FACTS" columnName="ORDER_QTY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="PROJ1::CVD_MATERIAL">
+      <attributes>
+        <attributeRef>MATID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>MATID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="PROJ1::CVD_CUSTOMER">
+      <attributes>
+        <attributeRef>CUSTID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CUSTID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="SALES_FACTS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="225"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="SALES_FACTS" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="306" y="105"/>
+      <rectangleSize width="160"/>
+    </shape>
+    <shape modelObjectName="PROJ1::CVD_MATERIAL" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="52" y="28"/>
+      <rectangleSize width="204"/>
+    </shape>
+    <shape modelObjectName="PROJ1::CVD_CUSTOMER" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="497" y="20"/>
+      <rectangleSize width="211"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

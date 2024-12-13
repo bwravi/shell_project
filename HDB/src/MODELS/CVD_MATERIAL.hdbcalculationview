@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="PROJ1::CVD_MATERIAL" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CVD_MATERIAL"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PROJ1::MAT_MAST">
+    <resourceUri>PROJ1::MAT_MAST</resourceUri>
+  </DataSource>
+  <DataSource id="PROJ1::MAT_TXT">
+    <resourceUri>PROJ1::MAT_TXT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="MATID"/>
+      <viewAttribute id="MAT_GROUP"/>
+      <viewAttribute id="MAT_TYPE"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="COMP_CODE"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="MAT_TEXT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PROJ1::MAT_MAST">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATID" source="MATID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAT_GROUP" source="MAT_GROUP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAT_TYPE" source="MAT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMP_CODE" source="COMP_CODE"/>
+    </input>
+    <input node="PROJ1::MAT_TXT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAT_TEXT" source="MAT_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATID" source="MATID"/>
+    </input>
+    <joinAttribute name="MATID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="MATID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATID"/>
+      <keyMapping columnObjectName="Join_1" columnName="MATID"/>
+    </attribute>
+    <attribute id="MAT_GROUP" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MAT_GROUP"/>
+      <keyMapping columnObjectName="Join_1" columnName="MAT_GROUP"/>
+    </attribute>
+    <attribute id="MAT_TYPE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MAT_TYPE"/>
+      <keyMapping columnObjectName="Join_1" columnName="MAT_TYPE"/>
+    </attribute>
+    <attribute id="PLANT" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PLANT"/>
+      <keyMapping columnObjectName="Join_1" columnName="PLANT"/>
+    </attribute>
+    <attribute id="COMP_CODE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMP_CODE"/>
+      <keyMapping columnObjectName="Join_1" columnName="COMP_CODE"/>
+    </attribute>
+    <attribute id="SPRAS" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPRAS"/>
+      <keyMapping columnObjectName="Join_1" columnName="SPRAS"/>
+    </attribute>
+    <attribute id="MAT_TEXT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MAT_TEXT"/>
+      <keyMapping columnObjectName="Join_1" columnName="MAT_TEXT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="193"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="PROJ1::MAT_MAST" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="177.115234375"/>
+    </shape>
+    <shape modelObjectName="PROJ1::MAT_TXT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="165.783203125"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

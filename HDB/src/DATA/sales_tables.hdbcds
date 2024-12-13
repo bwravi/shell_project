@@ -1,0 +1,64 @@
+namespace PROJ1;				
+				
+entity MAT_MAST {				
+    MATID     : String(18);				
+    MAT_GROUP : String(9);				
+   CREATEDON : LocalDate;				
+    MAT_TYPE  : String(4);				
+    OLD_MATID : String(18);				
+    PLANT     : String(10);				
+    COMP_CODE : String(10);				
+};				
+				
+entity ORDERS {				
+    ORDID      : String(10);				
+    ORDER_DATE : LocalDate;				
+    REQ_DATE   : LocalDate;				
+    CUSTID    : String(10);				
+    MATID      : String(18);				
+    EMPID      : String(10);				
+    ORDER_QTY  : Decimal(17, 2);				
+    UNIT       : String(3);				
+    PRICE      : Decimal(17, 2);				
+    CURRENCY   : String(5);				
+    YR         : String(4);				
+};				
+				
+				
+entity MAT_TXT {				
+    MATID    : String(18);				
+    SPRAS    : String(1);				
+    MAT_TEXT : String(50);				
+};				
+				
+				
+entity CUST_MAST {				
+        CUSTID   : String(10);				
+        CUST_NAME : String(40);				
+        REGION    : String(10);				
+        COUNTRY   : String(10);				
+        EMAILID    : String(30);				
+CREDIT_CARD : String(10);				
+};				
+				
+Entity EMP {				
+NODE_ID : String(10);				
+PARENT_ID : String(10);				
+FROM_DATE : LocalDate;				
+TO_DATE : LocalDate ;				
+} ;				
+				
+entity DELIVERY {				
+ORDID : String(10);				
+DELID : String(10);				
+DEL_DATE : LocalDate ;				
+CUSTID : String(10);				
+MATID  : String(18) ;				
+DELIVERY_QTY : Decimal(17,2);				
+UNIT       : String(3);				
+YR         : String(4);				
+};				
+				
+				
+				
+				
